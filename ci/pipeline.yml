@@ -86,6 +86,6 @@ jobs:
             args:
             - -c
             - |
-              cred='{"uri":"http://'{{config-username}}'@'{{config-password}}':blog-config.cfapps.pez.pivotal.io"}'
+              cred='{"uri":"http://'{{config-username}}':'{{config-password}}'@blog-config.cfapps.pez.pivotal.io"}'
               cf login -a {{cf-api}} -u {{cf-username}} -p {{cf-password}} -o {{cf-org}} -s {{cf-space}}
               cf create-user-provided-service config-service -p $cred
