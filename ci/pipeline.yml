@@ -70,3 +70,22 @@ jobs:
           manifest: config-server-repo/manifest.yml
           path: output/app.jar
           current_app_name: blog-config
+
+
+  - name: config-server-create-service
+    plan:
+      - task: create-service
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: governmentpaas/cf-cli
+          run:
+            path: sh
+            args:
+            - -c
+            - |
+              cred='{"uri":"http://'{{config-username}}'@'{{config-password}}':blog-config.cfapps.pez.pivotal.io"}'
+              cf login -a {{cf-api}} -u {{cf-username}} -p {{cf-password}} -o {{cf-org}} -s {{cf-space}}
+              cf create-user-provided-service config-service -p $cred
