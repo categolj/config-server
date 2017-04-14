@@ -1,7 +1,7 @@
 ---
 applications:
   - name: blog-config
-    memory: 640M
+    memory: 1g
     path: target/config-server.jar
     buildpack: java_buildpack_offline
     env:
