@@ -2,7 +2,9 @@
 applications:
   - name: blog-config
     memory: 1g
+    domain: sslip.io
+    host: blog-config-202-241-169-198
     path: target/config-server.jar
-    buildpack: java_buildpack_offline
+    buildpack: java_buildpack
     env:
       SECURITY_USER_PASSWORD: changeme
